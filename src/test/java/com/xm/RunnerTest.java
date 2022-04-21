@@ -1,7 +1,6 @@
 package com.xm;
 
 import com.xm.constants.Constants;
-import com.xm.core.Driver;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.AfterClass;
@@ -18,12 +17,8 @@ import org.junit.runner.RunWith;
 public class RunnerTest {
 
     @BeforeClass
-    public static void before() {
-        Driver.getChromeDriverInstance();
-    }
+    public static void before() {}
 
     @AfterClass
-    public static void after() {
-        Driver.getChromeDriverInstance().quit();
-    }
+    public static void after() {}
 }

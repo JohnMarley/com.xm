@@ -13,4 +13,16 @@ public class Environment {
 
     @Value("${baseUrl}")
     private String baseUrl;
+
+    @Value("${browser}")
+    private String browser;
+
+    @Value("${browserMaxSize}")
+    private Boolean isBrowserMaximized;
+
+    @Value("${browserWidth}")
+    private Integer browserWidth;
+
+    @Value("${browserHeight}")
+    private Integer browserHeight;
 }
