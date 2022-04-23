@@ -1,14 +1,15 @@
 package com.xm.core;
 
 import lombok.Getter;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component
 @Getter
-@PropertySource(value = "classpath:application-${env}.properties")
+@PropertySource(value = "classpath:application-${env:dev}.properties")
 public class Environment {
 
     @Value("${baseUrl}")
@@ -17,12 +18,7 @@ public class Environment {
     @Value("${browser}")
     private String browser;
 
-    @Value("${browserMaxSize}")
-    private Boolean isBrowserMaximized;
+    @PostConstruct
+    public void init(){ browser = browser.equals("${BROWSER_TYPE}")?"CH": browser; }
 
-    @Value("${browserWidth}")
-    private Integer browserWidth;
-
-    @Value("${browserHeight}")
-    private Integer browserHeight;
 }
