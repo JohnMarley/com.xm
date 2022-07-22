@@ -1,6 +1,6 @@
 package com.xm.pages.web.homepage;
 
-import com.xm.core.Driver;
+import com.xm.decorator.Button;
 import com.xm.pages.BasePage;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.xm.core.Driver.getDriverInstance;
 
 @Component
 public class HomePage extends BasePage {
@@ -33,7 +35,7 @@ public class HomePage extends BasePage {
 
     @Lazy
     @FindBy(xpath = ".//button[@data-dismiss='modal' and .='ACCEPT ALL']")
-    private WebElement acceptCookiesButton;
+    private Button acceptCookiesButton;
 
 
 
@@ -67,7 +69,7 @@ public class HomePage extends BasePage {
 
     public boolean isCookieModalDisplayed(){
         boolean result = false;
-        var wait = new WebDriverWait(Driver.getDriverInstance(), Duration.ofSeconds(5));
+        var wait = new WebDriverWait(getDriverInstance(), Duration.ofSeconds(5));
         try {
             return wait
                     .pollingEvery(Duration.ofMillis(500))
